@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>ECMA Script 6 Quiz</title>
+
+  <meta name="description" content="Slides for a gentle ECMA Script 6 quiz">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+
+  <style>
+    /* Style override */
+    .reveal ul {
+      list-style: none;
+      margin: 24px auto;
+
+      display:flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: flex-start;
+      align-items: flex-start;
+    }
+    .reveal ul li {
+      margin: 6px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-family: 'Raleway';
+      font-size: 2em;
+      background: white;
+      color: black;
+    }
+    .reveal .slides {
+      text-align: left;
+    }
+
+    .reveal .js-theme {
+      color: #323330;
+    }
+
+    .reveal p.question {
+      position: relative;
+      margin-left: 80px;
+      font-family: 'Raleway';
+      font-style: italic;
+      font-size: 2em;
+      text-decoration: underline;
+    }
+    .question::before {
+      content: "?";
+      position: absolute;
+      left: -80px;
+      top: 10px;
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      margin-right: 12px;
+      border-radius: 50%;
+
+      font: 'Raleway' normal bold 1em;
+      font-style: normal;
+      font-weight: bold;
+      line-height: 1em;
+      text-align: center;
+
+      color: #333333;
+      text-shadow: 0 -2px 0 #111111;
+      background: #E9E9E9;
+      box-shadow: 0 2px 0 #333333;
+    }
+
+    .response {
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: bold;
+      background-color: rgba(255,255,255,0.25);
+    }
+    .response.positive {
+      background-color: #00dd00;
+    }
+    .response.negative {
+      background-color: #dd0000;
+    }
+
+    .reveal .doge {
+      position: absolute;
+      font-family: 'Comic Sans MS', fantasy;
+    }
+  </style>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+        <!-- Intro -->
+        <section data-background="assets/CAAAAATS.jpg">
+          <h1>ECMAScript 6 Quiz</h1>
+          <h2>by @mxwllt</h2>
+        </section>
+
+        <section data-background="#dd0000">
+          <p style="text-align: center;">
+            <b>WARNING</b><br/>
+            This quiz is subject to dirty tricks.<br/>Do not trust the speaker.<br/>But don't be scared to answer.
+          </p>
+        </section>
+
+
+        <!-- Var -->
+        <!-- ---------------------------------------------------- -->
+        <section data-background="#F0DB4F" class="js-theme">
+          <h1>var/let/const</h1>
+        </section>
+
+        <section>
+          <p class="question">What's the output?</p>
+          <pre>
+            <code data-trim>
+const KEY = 'white_rabbit';
+if (true) {
+  const KEY = 'ginger_rabbit';
+}
+console.log(KEY);
+            </code>
+          </pre>
+          <h2 class="response fragment">white_rabbit</h2>
+        </section>
+
+        <section>
+          <p class="question">What's the output?</p>
+          <pre>
+            <code data-trim contenteditable>
+let x = 42;
+if (true) {
+  let x = 1337;
+}
+console.log(x);
+            </code>
+          </pre>
+          <h2 class="response fragment">42</h2>
+        </section>
+
+        <section>
+          <p class="question">What's the output?</p>
+          <pre>
+            <code data-trim contenteditable>
+let x = 42;
+if (true) {
+  console.log(x);
+  let x = 1337;
+}
+            </code>
+          </pre>
+          <h2 class="response negative fragment">ERROR!!!!!!</h2>
+        </section>
+
+
+        <!-- Function -->
+        <!-- ---------------------------------------------------- -->
+        <section data-background="#F0DB4F" class="js-theme">
+          <h1>Functions</h1>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+// Here is a new way to define functions
+var double = i => i*2;
+
+// Which is like
+var double = function (i) {
+  return i * 2;
+};
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p class="question">How to use the new syntax to define a function which doesn't take any parameter?</p>
+          <h2 class="response fragment">() => this.whatever;</h2>
+        </section>
+
+
+        <!-- Templates -->
+        <!-- ---------------------------------------------------- -->
+        <section data-background="#F0DB4F" class="js-theme">
+          <h1>Templates</h1>
+        </section>
+
+        <section>
+          <p class="question">What's the output?</p>
+          <pre>
+            <code data-trim contenteditable>
+var x = `foo ${y}`,
+    y = `bar ${x}`;
+
+console.log(x);
+            </code>
+          </pre>
+          <h2 class="response fragment">foo undefined</h2>
+        </section>
+
+        <section>
+          <p class="question">What's the output?</p>
+          <pre>
+            <code data-trim contenteditable>
+var x = `foo ${y}`,
+    y = `bar ${x}`;
+
+console.log(y);
+            </code>
+          </pre>
+          <h2 class="response fragment">bar foo undefined</h2>
+        </section>
+
+
+        <!-- Map and set -->
+        <!-- ---------------------------------------------------- -->
+        <section data-background="#F0DB4F" class="js-theme">
+          <h1>Map and Set</h1>
+        </section>
+
+        <section>
+          <h2>Map example</h2>
+          <pre>
+            <code data-trim contenteditable>
+var myMap = new Map(),
+    keyObj = {},
+    keyFunc = function () {};
+
+myMap.set(keyObj, "value for keyObj");
+myMap.set(keyFunc, "value for keyFunc");
+
+myMap.get(keyObj);  // "value for keyObj"
+myMap.get(keyFunc); // "value for keyFunc"
+            </code>
+          </pre>
+        </section>
+
+
+        <section>
+          <h2>Set example</h2>
+          <pre>
+            <code data-trim contenteditable>
+var mySet = new Set();
+
+mySet.add(5);
+mySet.add("something");
+
+mySet.has(5);                // true
+mySet.has("some" + "thing"); // true
+mySet.has(32);               // false
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p class="question">What's the attribute to get the quantity of objects stored in a `Set` object?</p>
+          <ul>
+            <li>length</li>
+            <li>size</li>
+            <li>weight</li>
+            <li>area</li>
+          </ul>
+          <h2 class="response fragment">size</h2>
+        </section>
+
+        <section>
+          <p class="question">What's the difference between Map/Set and WeakMap/WeakSet ?</p>
+          <h2 class="response fragment">Values cannot be primitive types. Values are objects and are "weakly" held</h2>
+        </section>
+
+
+        <!-- Declare -->
+        <!-- ---------------------------------------------------- -->
+        <section data-background="#F0DB4F" class="js-theme">
+          <h1>Declare</h1>
+        </section>
+
+        <section>
+          <p class="question">In ES6, is there a better way to create this object?</p>
+          <pre>
+            <code data-trim contenteditable>
+let options = {
+  protocol: protocol,
+  url: url,
+  method: method,
+  callback: callback
+};
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+let options = {
+  protocol,
+  url,
+  method,
+  callback
+};
+            </code>
+          </pre>
+        </section>
+
+
+        <!-- Function -->
+        <!-- ---------------------------------------------------- -->
+        <section data-background="#F0DB4F" class="js-theme">
+          <h1>Class</h1>
+        </section>
+
+        <section>
+          <p class="question">Which keywork is not allowed in ES6 Class definition?</p>
+          <ul>
+            <li>private</li>
+            <li>static</li>
+            <li>constructor</li>
+            <li>set</li>
+          </ul>
+          <h2 class="response fragment">Private</h2>
+        </section>
+
+        <section>
+          <h2>Class example</h2>
+          <pre>
+            <code data-trim contenteditable style="font-size: 1.5em;">
+// Create a logger facade
+class Logger {
+  constructor (type = "Info") {
+    this.type = type;
+  }
+
+  get current()     { return `Logger: ${this.type}`; }
+  set current(type) { this.type = type; }
+
+  static create(type) { return new this(type); }
+  log (message)       { /* Basic method */ }
+}
+            </code>
+          </pre>
+        </section>
+
+
+        <!-- Syntax -->
+        <!-- ---------------------------------------------------- -->
+        <section data-background="#F0DB4F" class="js-theme">
+          <h1>Is it legal or not?</h1>
+          <h2>Syntax test</h2>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+var score = [12, 7, 14];
+Math.max(...score);
+            </code>
+          </pre>
+          <h2 class="response fragment positive">Yes</h2>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+function stuff(x::Number, y::String) {
+  // Do stuff..
+}
+            </code>
+          </pre>
+          <h2 class="response fragment negative">Nope.</h2>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+function stuff(x, ...y) {
+  // Do stuff..
+}
+            </code>
+          </pre>
+          <h2 class="response fragment positive">Yes</h2>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+function stuff(x, y=12) {
+  // Do stuff..
+}
+stuff(2);
+            </code>
+          </pre>
+          <h2 class="response fragment positive">Yes</h2>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+function stuff(x, y=x/3) {
+  // Do stuff..
+}
+stuff(6);
+            </code>
+          </pre>
+          <h2 class="response fragment positive">Yes</h2>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+var {foo, bar} = {
+  foo: 'FOO',
+  bar: 'BAR'
+};
+            </code>
+          </pre>
+          <h2 class="response fragment positive">Yes</h2>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+var [first, , last] = [1,2,3];
+            </code>
+          </pre>
+          <h2 class="response fragment positive">Yes</h2>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim contenteditable>
+function stuff(a, x=12, y=42) {
+  // Do stuff..
+}
+stuff(1, ,2);
+            </code>
+          </pre>
+          <h2 class="response fragment negative">Nope.</h2>
+        </section>
+
+
+        <!-- Promises -->
+        <!-- ---------------------------------------------------- -->
+        <section data-background="#F0DB4F" class="js-theme">
+          <h1>Promises</h1>
+        </section>
+
+        <section>
+          <p class="question">What the Promise constructor take as parameter(s)?</p>
+          <h2 class="response fragment">Only one parameter: an 'executor'<br/>function (resolve, reject) {...}</h2>
+        </section>
+
+        <section>
+          <p class="question">How to use the progress on a ES6 Promise?<br/><small>(like in the Q library)</small></p>
+          <h2 class="response negative fragment">Sorry,<br/>this is not available in ES6 :-(</h2>
+        </section>
+
+        <section>
+          <h2>Progress example in Q</h2>
+          <pre>
+            <code data-trim contenteditable>
+uploadFile()
+  .then(function (data)     {/* Success */},
+        function (err)      {/* Error */},
+        function (progress) {/* Progress */});
+// Or..
+uploadFile()
+  .progress(function (progress) {
+    // Progress
+  });
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p class="question">Is there a method to take a lot of promises, wrap them into one which will be resolved (or rejected) once one of them will be resolved?</p>
+          <h2 class="response fragment">Yes, it's 'race'</h2>
+        </section>
+
+        <section>
+          <h2>Promise.race()</h2>
+          <pre>
+            <code data-trim contenteditable>
+Promise
+  .race([loadSiteMap, loadGOTin4K])
+  .then(function(value) {
+    // Success case
+  }, function(reason) {
+    // Error case
+  });
+            </code>
+          </pre>
+        </section>
+
+
+        <!-- General -->
+        <!-- ---------------------------------------------------- -->
+        <section data-background="#F0DB4F" class="js-theme">
+          <h1>General</h1>
+        </section>
+
+        <section style="position: relative;">
+          <p class="question">Which one of this keywords won't be compatible on ES6?</p>
+          <ul>
+            <li>typeof</li>
+            <li>continue</li>
+            <li>for..in</li>
+          </ul>
+          <h2 class="response negative fragment">NONE! ES6 is completely retrocompatible</h2>
+          <span class="doge fragment" style="top: -74px; left: 292px; font-size: 2.5em; color: green;">Such speed</span>
+          <span class="doge fragment" style="top: 479px; left: 114px; font-size: 2.75em; color: orange;">r u a dev?</span>
+          <span class="doge fragment" style="top: 211px; left: 1013px; font-size: 1.75em; color: white;">so futurist</span>
+          <span class="doge fragment" style="top: 577px; left: 649px; font-size: 1.75em; color: green;">so fab'</span>
+          <span class="doge fragment" style="top: 536px; left: -114px; font-size: 1.75em; color: aqua;">So retro</span>
+          <span class="doge fragment" style="top: 608px; left: 930px; font-size: 1.5em; color: aqua;">compatible 4 evr</span>
+          <span class="doge fragment" style="top: -14px; left: 620px; font-size: 2.25em; color: yellow;">much easy</span>
+          <span class="doge fragment" style="top: 0px; font-size: 2.25em; color: rgb(0, 255, 0); left: -178px;">very ECMAScript</span>
+          <span class="doge fragment" style="top: 317px; left: -168px; font-size: 1em; color: blue;">Mind blow</span>
+          <span class="doge fragment" style="top: 204px; left: -144px; font-size: 1.5em; color: aqua;">much future</span>
+          <span class="doge fragment" style="top: 554px; left: 448px; font-size: 2.25em; color: purple;">much hype</span>
+          <span class="doge fragment" style="top: 287px; left: 59px; font-size: 1.5em; color: white;">Such for..in</span>
+          <span class="doge fragment" style="top: 383px; left: -120px; font-size: 2em; color: yellow;">function () {}</span>
+          <span class="doge fragment" style="top: 401px; left: 877px; font-size: 1.25em; color: aqua;">simple inside</span>
+          <span class="doge fragment" style="top: 682px; left: 115px; font-size: 2em; color: white;">much simple</span>
+          <span class="doge fragment" style="top: 43px; left: 943px; font-size: 2em; color: red;">WoW</span>
+        </section>
+
+        <section>
+          <p class="question">Which stable browser got the best ES6 support ?</p>
+          <h2 class="response fragment">Firefox 36 (64%)</h2>
+        </section>
+
+
+        <!-- Extra -->
+        <!-- ---------------------------------------------------- -->
+        <section data-background="#F0DB4F" class="js-theme">
+          <h1>Final boss</h1>
+        </section>
+
+        <section>
+          <p class="question">Which var got the max value?</p>
+          <pre>
+            <code data-trim contenteditable>
+var a = 0x1101010110111,
+    b = 0o1101010110111,
+    c = 0b1101010110111,
+    d = 001101010110111,
+    e = 0E1101010110111,
+    f =   1101010110111;
+            </code>
+          </pre>
+          <h2 class="response fragment">A</h2>
+        </section>
+
+        <section>
+          <table style="font-size: 2.5em;">
+            <tr>
+              <td>x</td>
+              <td>Hexa</td>
+            </tr>
+            <tr>
+              <td>o/0</td>
+              <td>Octal</td>
+            </tr>
+            <tr>
+              <td>b</td>
+              <td>Binary</td>
+            </tr>
+            <tr>
+              <td>E</td>
+              <td>x10exp</td>
+            </tr>
+          </table>
+        </section>
+
+
+        <!-- Credits -->
+        <!-- ---------------------------------------------------- -->
+        <section data-background="#F0DB4F" class="js-theme">
+          <h2>More info at</h2>
+
+          <h3>MDN: Mozilla Developer Network</h3>
+          <h5>https://developer.mozilla.org/</h5>
+
+          <h3>ES6 compatibility table (by Kangax)</h3>
+          <h5>http://kangax.github.io/compat-table/es6/</h5>
+
+          <h3>Power of ES6 (by Charles B. King)</h3>
+          <h5>http://charlesbking.com/power_of_es6/#/45</h5>
+        </section>
+
+        <section data-background="#F0DB4F" class="js-theme">
+          <h1>Thanks everybody</h1>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+    	// Full list of configuration options available at:
+    	// https://github.com/hakimel/reveal.js#configuration
+    	Reveal.initialize({
+    		controls: false,
+    		progress: true,
+    		history: true,
+    		center: true,
+
+    		transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+    		// Optional reveal.js plugins
+    		dependencies: [
+          {
+            src: 'lib/js/classList.js',
+            condition: function() { return !document.body.classList; }
+          },
+          {
+            src: 'plugin/markdown/marked.js',
+            condition: function() { return !!document.querySelector( '[data-markdown]' ); }
+          },
+          {
+            src: 'plugin/markdown/markdown.js',
+            condition: function() { return !!document.querySelector( '[data-markdown]' ); }
+          },
+          {
+            src: 'plugin/highlight/highlight.js',
+            async: true,
+            condition: function() { return !!document.querySelector( 'pre code' ); },
+            callback: function() { hljs.initHighlightingOnLoad(); }
+          },
+          {
+            src: 'plugin/zoom-js/zoom.js',
+            async: true
+          },
+          {
+            src: 'plugin/notes/notes.js',
+            async: true
+          }
+        ]
+      });
+
+    </script>
+  </body>
+</html>
